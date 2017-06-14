@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+		<!-- 配置静态工厂方法 
+			class属性 指向的是工厂的全类名
+			还要指定 factory-method 用了什么方法
+			需要传参数的使用 <consctructor-arg value=>
+		 -->
+		<bean id="car" class="com.hxd.factory.StaticFactory" 
+			factory-method="getcar"
+		>
+				<constructor-arg value="aodi" ></constructor-arg>
+		</bean>
+		<!-- 实例工厂
+			先实例化 一个工厂 在引用这工厂 在指定是用了什么方法
+		 -->
+		
+		<bean id="factory" class="com.hxd.com.Instancefactory" ></bean>
+		<bean id="car1" factory-bean="factory"  factory-method="getcar">
+			<constructor-arg  value="benchi"></constructor-arg>
+		</bean>
+</beans>
