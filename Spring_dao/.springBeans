@@ -7,10 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/applicationContext.xml</config>
-		<config>src/bean_life.xml</config>
-		<config>src/beanfactory.xml</config>
-		<config>src/aspectDemo.xml</config>
+		<config>src/applicationcontext.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

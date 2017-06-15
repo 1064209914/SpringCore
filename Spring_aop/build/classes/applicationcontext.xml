@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	<bean id="dao" class="daoimpl.UserDaoImpl"></bean>
+	<bean id="service" class="serviceimpl.UserServciceImpl">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	<bean id="LoggerBefore" class="aop.LoggerBefore"></bean>
+	<bean id="LoggerAfterReturning" class="aop.LoggerAfterReturning"></bean>
+
+	<aop:config>
+		<aop:pointcut expression="execution(public void addNewUser(entity.User))"
+			id="pointcut" />
+		<aop:advisor pointcut-ref="pointcut" advice-ref="LoggerBefore" />
+		<aop:advisor pointcut-ref="pointcut" advice-ref="LoggerAfterReturning" />
+	</aop:config>
+
+</beans>
